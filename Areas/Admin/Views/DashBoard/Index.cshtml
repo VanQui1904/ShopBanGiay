@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.BrandViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card__box">
+    <div class="card__content"  style="background-color: #3e54d3;">
+        <div>
+            <div class="numbers">1.504</div>
+            <div class="cardname">Lượt xem gần đây</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="eye-outline"></ion-icon>
+
+        </div>
+    </div>
+
+    <div class="card__content"  style="background-color: #4f80e2;">
+        <div>
+            <div class="numbers">80</div>
+            <div class="cardname">Bán hàng</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="cart-outline"></ion-icon>
+        </div>
+    </div>
+
+    <div class="card__content" style="background-color: #15cdca;">
+        <div>
+            <div class="numbers">284</div>
+            <div class="cardname">Bình luận</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+
+        </div>
+    </div>
+
+    <div class="card__content" style="background-color: #4fe0b6;">
+        <div>
+            <div class="numbers">$7,842</div>
+            <div class="cardname">Doanh thu</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="cash-outline"></ion-icon>
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-6 m-3 bg-light-subtle shadow-lg">
+        <div class="d-flex m-1 justify-content-between">
+            <h2>Index</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </div>
+        <table class="table table-hover">
+            <tr class="table-dark">
+                <th>
+                    @Html.DisplayNameFor(model => model.BrandId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrandName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="col-6 bg-light m-3 shadow-lg">
+        @Html.Action("Category", "DashBoard")
+    </div>
+</div>

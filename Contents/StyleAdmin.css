@@ -1,0 +1,234 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ubuntu' sans-serif;
+}
+
+:root {
+    --blue: #287bff;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.app {
+    position: relative;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    /*background: var(--blue);*/
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+    .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+            .navigation ul li:hover {
+                background: var(--white);
+            }
+/* #user{
+    margin-left:  100px;
+    margin-top: 30px;
+} */
+#user img {
+    margin: 10px 20px;
+    width: 200px;
+    height: 140px;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.line {
+    border: 2px solid var(--white);
+    margin-right: 10px;
+}
+
+.navigation ul li:nth-child(1) {
+    margin-top: 200px;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a {
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+    .navigation ul li a .icon ion-icon {
+        font-size: 1.75em;
+    }
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+.navigation ul li:hover a::before {
+    content: ' ';
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 0px var(--blue);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after {
+    content: ' ';
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 20px 0px 0px 10px var(--blue);
+    pointer-events: none;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+.topbar {
+    
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    position: sticky;
+}
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+    .search label {
+        position: relative;
+        width: 100%;
+    }
+
+        .search label input {
+            width: calc(100%-300px);
+            height: 40px;
+            margin-left: 400px;
+            border-radius: 40px;
+            padding: 10px 5px;
+            padding-left: 100px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid var(--black2);
+        }
+
+        .search label ion-icon {
+            position: absolute;
+            top: 0;
+            left: 410px;
+            font-size: 1.5em;
+        }
+
+.card__box {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+}
+
+    .card__box .card__content {
+        position: relative;
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    }
+
+        .card__box .card__content .numbers {
+            position: relative;
+            font-weight: 500;
+            font-size: 2.5em;
+            color: var(--white);
+        }
+
+        .card__box .card__content .cardname {
+            color: var(--white);
+            font-size: 1.1em;
+        }
+
+        .card__box .card__content .icon8x {
+            font-size: 3.5em;
+            color: var(--white);
+        }
+
+        .card__box .card__content:hover {
+            box-shadow: 0px 0px 0px 1px var(--black2);
+        }
+
+
+
+@media (min-width:1400px){
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        width: 1700px;
+    }
+}

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ShoeStoreProject.Models.OrderDetail>
+@{
+    ViewBag.Title = "DetailsOrder";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Detail Order</h2>
+    </div>
+    <div class="col-12">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <td>OrdersID</td>
+                    <td>Quantity</td>
+                    <td>UnitPrice</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OrderID</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.UnitPrice</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.ActionLink("Back to list","Orders","QLOrders", new {@class="justify-content-end btn btn-outline-primary btn-sm"})
+    </div>
+
+</div>
+

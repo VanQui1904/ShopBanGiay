@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.AccountViewModel>
+
+@{
+    ViewBag.Title = "Accounts";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="bg-light shadow-md m-3 rounded-md">
+    <div class="d-flex m-1 justify-content-between">
+        <h2>Accounts</h2>
+    </div>
+
+    <table class="table table-hover">
+        <tr class="table-dark">
+            <th>
+                @Html.DisplayNameFor(model => model.AccountID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.Email)
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Role", "RoleAccount", "QLAccounts", new { id = item.AccountID /* id=item.PrimaryKey */ }, new {@class="btn btn-outline-warning btn-sm"})
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

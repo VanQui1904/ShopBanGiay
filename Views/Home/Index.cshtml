@@ -1,0 +1,54 @@
+﻿@using ShoeStoreProject.Models
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/NewFolder1/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Style/css/LayoutSite.css" rel="stylesheet" />
+
+    <style>
+        .card {
+            width: 250px;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+
+        #margin-card {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<h2>Xin chào quý khách</h2>
+<div>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div>
+                <div>@item.proImage</div>
+                <div>
+                    Tên Sách: @item.proName
+                </div>
+                <div>Gía Bán: @item.Price</div>
+                @Html.ActionLink("Chi tiết đơn hàng","DetailGiay", "Home", new {id = item.ProductID},null)
+            </div>
+        }
+    }
+
+</div>

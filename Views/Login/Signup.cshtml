@@ -1,0 +1,63 @@
+﻿@model ShoeStoreProject.Models.Account
+
+<link href="~/Contents/StyleLogin.css" rel="stylesheet" />
+
+<section class="container forms">
+    <div class="form login">
+        <div class="form-content">
+            <header>Signup</header>
+
+            @using (Html.BeginForm("Signup", "Login", FormMethod.Post))
+            {
+                <div class="field input-field">
+                    <label>User Name</label>
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input" } })
+                    <span id="emailSigError" class="error" style="color: red; padding: 10px 0;"></span><br>
+                </div>
+                <div class="field input-field">
+                    <lable>Password</lable>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                    <span id="nameSigError" class="error" style="color: red; padding: 10px 0;"></span><br>
+                </div>
+
+                <div class="field input-field">
+                    <label>Phone</label>
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "input" } })
+                    <span id="passSiglError" class="error" style="color: red; padding: 10px 0;"></span><br>
+                </div>
+
+                <div class="field input-field">
+                    <label>Email</label>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input" } })
+                    <span id="comfirmError" class="error" style="color: red; padding: 10px 0;"></span><br>
+                </div>
+
+                <div class="field input-field">
+                    <label>Comfirm Password</label>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                    <span id="comfirmError" class="error" style="color: red; padding: 10px 0;"></span><br>
+                </div>
+
+                <div class="field button-field">
+                    <input type="submit" id="submit" name="dangki">
+                </div>
+            }
+            <div class="from-link">
+                <span>Already have an account?<a href="@Url.Action("Login","Login")" class="sigup-link">Login</a></span>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <div class="media-option">
+            <a href="" class="field facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <span>Login with facebook</span>
+            </a>
+            <a href="" class="field google">
+                <ion-icon name="logo-google"></ion-icon>
+                <span>Login with google</span>
+            </a>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,46 @@
+﻿<link href="~/Contents/StyleLogin.css" rel="stylesheet" />
+
+<section class="container forms">
+    <div class="form login">
+        <div class="form-content">
+            <header>Login</header>
+
+            <form action="signup.php" method="post" onsubmit="return validateForm()">
+
+                <div class="field input-field">
+                    <input type="email" placeholder="Email" class="input" name="email" id="email">
+                    <span id="emailError" class="error"></span><br>
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Password" class="input" name="password" id="password">
+                    <span id="passwordError" class="error"></span><br>
+                </div>
+
+                <div class="from-link">
+                    <a href="#" class="forgot-pass">Forgot passwword?</a>
+                </div>
+
+                <div class="field button-field">
+                    <input type="submit" id="submit" name="dangnhap" value="Login">
+                </div>
+
+                <div class="from-link">
+                    <span>Do have an account?<a href="@Url.Action("Signup","Login")" class="sigup-link">Signup</a></span>
+                </div>
+            </form>
+        </div>
+        <div class="line"></div>
+        <div class="media-option">
+            <a href="" class="field facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <span>Login with facebook</span>
+            </a>
+            <a href="" class="field google">
+                <ion-icon name="logo-google"></ion-icon>
+                <span>Login with google</span>
+            </a>
+        </div>
+
+    </div>
+</section>

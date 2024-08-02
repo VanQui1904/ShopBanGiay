@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.OrdersViewModel>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="bg-light shadow-sm m-3">
+    <div class="d-xl-flex justify-content-between align-content-center">
+        <h2>Orders</h2>
+
+        
+    </div>
+    <table class="table table-hover">
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Details", "DetailsOrder", "QLOrders", new { id = item.OrderID /* id=item.PrimaryKey */ }, new {@class="btn btn-outline-primary btn-sm"})
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new {@class="btn btn-outline-danger btn-sm"})
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
