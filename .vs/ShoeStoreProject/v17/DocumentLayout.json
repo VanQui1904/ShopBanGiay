@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\views\\home\\detailgiay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|solutionrelative:views\\home\\detailgiay.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|d:\\hk2_nam_bar\\mvc\\shoestoreproject\\areas\\admin\\views\\profile\\viewprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|d:\\hk2_nam_bar\\mvc\\shoestoreproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\areas\\admin\\views\\profile\\viewprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E2A6F39-82A6-4E40-BFF2-83FD5866772D}|ShoeStoreProject.csproj|solutionrelative:areas\\admin\\views\\profile\\viewprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -350,7 +350,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -378,8 +378,7 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\Profile\\ViewProfile.cshtml",
               "ViewState": "AQIAAA4AAAAAAAAAAADwvygAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-08T08:49:06.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T08:49:06.113Z"
             },
             {
               "$type": "Document",
@@ -431,26 +430,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DetailGiay.cshtml",
               "DocumentMoniker": "D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\Views\\Home\\DetailGiay.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\DetailGiay.cshtml",
               "ToolTip": "D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\Views\\Home\\DetailGiay.cshtml",
               "RelativeToolTip": "Views\\Home\\DetailGiay.cshtml",
-              "ViewState": "AQIAAD0AAAAAAAAAAADwv1cAAAAJAAAA",
+              "ViewState": "AQIAAD0AAAAAAAAAAADwv0kAAABrAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-06T16:09:11.028Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\HK2_nam_bar\\MVC\\ShoeStoreProject\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAC0AAAAAAAAAAADwv0IAAAAWAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAADwv0EAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-06T16:05:13.686Z",
               "EditorCaption": ""
