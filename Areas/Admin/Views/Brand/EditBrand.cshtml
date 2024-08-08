@@ -1,0 +1,35 @@
+﻿@model ShoeStoreProject.Areas.Admin.Data.BrandViewModel
+
+@{
+    ViewBag.Title = "Edit Brand";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-primary">Edit Brand</h2>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("EditBrand", "Brand", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(model => model.BrandId) <!-- Thêm input ẩn cho BrandId -->
+
+                <div class="form-group mt-3 mb-3">
+                    @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-actions d-flex justify-content-end mt-3">
+                    <a href="@Url.Action("Index", "Brand")" class="btn btn-outline-warning btn-sm ml-2">Back to List</a>
+                    <input type="submit" value="Save" class="btn btn-primary btn-sm" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

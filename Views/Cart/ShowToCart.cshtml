@@ -1,0 +1,121 @@
+﻿@model ShoeStoreProject.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/NewFolder1/_Layout.cshtml";
+}
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .card {
+            width: 250px;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+
+        #margin-card {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<h4>Thông tin giỏ hàng của bạn</h4>
+@if (Model != null && Model.Items != null && Model.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="color: #5461ed">Tên sản phẩm</th>
+                <th style="color: #5461ed">Ảnh minh họa</th>
+                <th style="color: #5461ed">Size</th>
+                <th style="color: #5461ed">Giá</th>
+                <th style="color: #5461ed">Số lượng</th>
+                <th style="color: #5461ed">Tổng thành tiền</th>
+                <th style="color: #5461ed">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                var total = item._shopping_product.Price.HasValue ? item._shopping_product.Price.Value * item._shopping_quantity : 0;
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayFor(m => item._shopping_product.proName)</strong>
+                    </td>
+                    <td>
+                        <img src="~/Image/Giay_sport/@item._shopping_product.proImage" style="height:200px;width:200px;" />
+                    </td>
+                    <td>@Html.DisplayFor(m => item._shopping_product.Size)</td>
+                    <td>@Html.DisplayFor(m => item._shopping_product.Price)</td>
+                    <td>
+                        @using (Html.BeginForm("Update_Quantity_Cart", "Cart", FormMethod.Post))
+                        {
+                            @Html.Hidden("id_pro", item._shopping_product.ProductID)
+                            <input type="number" name="quantity" value="@item._shopping_quantity" min="1" required />
+                            <input type="submit" value="Lưu" class="btn btn-outline-primary" />
+                        }
+                    </td>
+                    <td>@total,000 VND</td>
+                    <td>
+                        <a href="@Url.Action("RemoveCart", "Cart", new { id = item._shopping_product.ProductID })" class="btn btn-outline-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="4" style="text-align: center">
+                    @using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post))
+                    {
+                        <table style="border-collapse:separate; border-spacing: 5px;">
+                            <tr>
+                                <td>Số điện thoại đã đăng ký:</td>
+                                <td><input type="text" name="Phone" required /></td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ giao hàng:</td>
+                                <td><input type="text" name="Diachigiaohang" required /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Đặt Hàng" class="btn btn-success" />
+                                    <a href="@Url.Action("Create", "KhachHang")" class="btn btn-outline-primary"> Đăng Ký</a>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align:right"><strong>Tổng thành tiền: @Model.Total_Money(),000 VND</strong></td>
+            </tr>
+            <tr>
+                <td colspan="7" style="text-align:center">
+                    @if (TempData["OrderId"] != null)
+                    {
+                        <a href="@Url.Action("OrderDetails", "Cart", new { orderId = TempData["OrderId"] })" class="btn btn-info">Xem lại chi tiết đơn hàng</a>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">Tiếp tục mua hàng</a>
+}
+else
+{
+    <p>Giỏ hàng trống.</p>
+}

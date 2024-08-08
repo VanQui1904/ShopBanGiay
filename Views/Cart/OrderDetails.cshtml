@@ -1,0 +1,70 @@
+﻿
+
+@model ShoeStoreProject.ViewModel.OrderDetailsViewModel
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/NewFolder1/_Layout.cshtml";
+}
+
+<h2 class="text-center mb-4">Chi tiết đơn hàng</h2>
+
+<div class="container">
+    <!-- Thông tin đơn hàng -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4 class="card-title">Thông tin đơn hàng</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Mã đơn hàng:</dt>
+                <dd class="col-sm-8">@Model.Order.OrderID</dd>
+
+                <dt class="col-sm-4">Ngày đặt hàng:</dt>
+                <dd class="col-sm-8">@Model.Order.OrderDate</dd>
+
+                <dt class="col-sm-4">Số điện thoại:</dt>
+                <dd class="col-sm-8">@Model.Order.OrderPhone</dd>
+
+                <dt class="col-sm-4">Địa chỉ giao hàng:</dt>
+                <dd class="col-sm-8">@Model.Order.AddressOrder</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Chi tiết sản phẩm -->
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Chi tiết sản phẩm trong đơn hàng</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detail in Model.OrderDetails)
+                    {
+                        var product = Model.Products.SingleOrDefault(p => p.ProductID == detail.ProductID);
+                        if (product != null)
+                        {
+                            <tr>
+                                <td>@product.proName</td>
+                                <td>@detail.Quantity</td>
+                                <td>@detail.UnitPrice VND</td>
+                                <td>@detail.TotalAmount VND</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a href="@Url.Action("Index", "Home")" class="btn btn-outline-warning">Tiếp tục mua hàng</a>
+

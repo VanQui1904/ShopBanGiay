@@ -12,8 +12,13 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
     {
         // GET: Admin/QLCustomers
         private ModelShoeStore context = new ModelShoeStore();
+        //[Authorize(Roles = "Admin")]
         public ActionResult Customers()
         {
+            //if (Session["Role"] == null || Session["Role"].ToString() != "Customer")
+            //{
+            //    return RedirectToAction("Login", "Login");
+            //}
             var itemCus = from c in context.Customers
                           select new CustomersViewModel()
                           {
@@ -28,11 +33,13 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
             return View(itemCus);
         }
         [HttpGet]
+        //[Authorize(Roles = "Admin")]
         public ActionResult AddCustomer()
         {
             return View();
         }
         [HttpPost]
+       //[Authorize(Roles = "Admin")]
         public ActionResult AddCustomer(CustomersViewModel forndata)
         {
             var itemcus = new Customer();
@@ -47,6 +54,7 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
             return View(itemcus);
         }
         [HttpGet]
+        //[Authorize(Roles = "Admin")]
         public ActionResult EditCustomer(int id)
         {
             var editCus = (from  c in context.Customers
@@ -69,6 +77,7 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
             return View(editCus);
         }
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public ActionResult EditCustomer(CustomersViewModel formdata)
         {
             var editcus = context.Customers.Where(x=>x.CustomerID == formdata.CustomerID).FirstOrDefault();
@@ -86,17 +95,49 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("Customers", "QLCustomers");
         }
+
         [HttpGet]
         public ActionResult DeleteCustomer(int id)
         {
             var delCus = context.Customers.Where(d => d.CustomerID == id).FirstOrDefault();
-            if(delCus == null)
+            if (delCus == null)
             {
                 return RedirectToAction("Customers", "QLCustomers");
             }
-            context.Customers.Remove(delCus);
-            context.SaveChanges();
             return View(delCus);
         }
+
+        // POST: QLCustomers/DeleteCustomer/5
+        [HttpPost, ActionName("DeleteCustomer")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var delCus = context.Customers.Where(d => d.CustomerID == id).FirstOrDefault();
+            if (delCus == null)
+            {
+                return RedirectToAction("Customers", "QLCustomers");
+            }
+
+            try
+            {
+                context.Customers.Remove(delCus);
+                context.SaveChanges();
+                TempData["SuccessMessage"] = "Khách hàng đã được xóa thành công.";
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE constraint"))
+                {
+                    TempData["ErrorMessage"] = "Không thể xóa khách hàng này vì đang có dữ liệu liên quan.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Có lỗi xảy ra khi xóa khách hàng.";
+                }
+            }
+
+            return RedirectToAction("Customers", "QLCustomers");
+        }
+
     }
 }

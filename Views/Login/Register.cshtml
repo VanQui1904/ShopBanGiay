@@ -1,0 +1,68 @@
+﻿@model ShoeStoreProject.ViewModel.RegisterViewModel
+
+
+<link href="~/Contents/StyleLogin.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+<section class="app forms">
+    <div class="form login">
+        <div class="form-content">
+            <header>Register</header>
+
+            @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
+        <div class="field input-field">
+            <input type="text" placeholder="User Name" class="input" name="Username">
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+        <div class="field input-field">
+            <input type="password" placeholder="Password" class="input" name="Password" >
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+
+        <div class="field input-field">
+            <input type="text" placeholder="Phone" class="input" name="Phone" >
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+
+        <div class="field input-field">
+            <input type="email" placeholder="Email" class="input" name="Email" >
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+
+        <div class="field input-field">
+            <input type="password" placeholder="Confirm password" class="input" name="ConfirmPassword">
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+
+                <div class="field button-field mt-3 mb-3">
+                    <input type="submit" id="submit" name="register" value="Register" class="btn btn-primary">
+                </div>
+            }
+            <div class="from-link">
+                <span>Already have an account?<a href="@Url.Action("Login","Login")" class="sigup-link mt-3 mb-3">Login</a></span>
+            </div>
+
+        </div>
+        <div class="line"></div>
+        <div class="media-option">
+            <a href="" class="field facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <span>Login with facebook</span>
+            </a>
+            <a href="" class="field google">
+                <ion-icon name="logo-google"></ion-icon>
+                <span>Login with google</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+<script src="/Scripts/jquery-3.6.0.min.js"></script>
+<script src="/Scripts/jquery.validate.min.js"></script>

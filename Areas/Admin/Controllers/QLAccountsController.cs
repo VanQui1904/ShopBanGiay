@@ -12,41 +12,39 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
     {
         // GET: Admin/QLAccounts
         private ModelShoeStore context = new ModelShoeStore();
+
+        //[Authorize(Roles = "Admin")]
         public ActionResult Accounts()
         {
+           
             var itemAcc = from m in context.Accounts
                           select new AccountViewModel()
                           {
                               AccountID = m.AccountID,
                               Username = m.Username,
-                              
                               Role = m.Role,
                               Email = m.Email,
                               Phone = m.Phone
                           };
-            return View(itemAcc);
+            return View(itemAcc.ToList());
         }
-        [HttpGet]
-        public ActionResult RoleAccount(int id)
-        {
-            var acc = new AccountViewModel();
-            var roleAcc = context.Accounts.OrderBy(x => x.Role).ToList();
-            ViewBag.Role = new SelectList(roleAcc, "AccountID", "Role");
-            return View(acc);
-        }
-        [HttpPost]
-        public ActionResult RoleAccount(AccountViewModel formdata)
-        {
-            var role = context.Accounts.Where(x=>x.AccountID == formdata.AccountID).FirstOrDefault();
-            if (role == null)
-            {
-                return RedirectToAction("Accounts", "QLAccounts");
-            }
-            role.Role = "Admin";
 
+        [HttpPost]
+       // [Authorize(Roles = "Admin")]
+        public JsonResult UpdateRole(int AccountID, string Role)
+        {
+            var account = context.Accounts.FirstOrDefault(a => a.AccountID == AccountID);
+            if (account == null)
+            {
+                return Json(new { success = false, message = "Account not found" });
+            }
+
+            account.Role = Role;
             context.SaveChanges();
-            return View(role);
-            
+
+            return Json(new { success = true });
         }
+
+
     }
 }

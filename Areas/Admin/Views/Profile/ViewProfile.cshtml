@@ -1,0 +1,76 @@
+﻿@model ShoeStoreProject.Models.Customer
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Personal Information</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        @Html.ActionLink("Chỉnh sửa thông tin", "EditProfile", new { id = Model.CustomerID }, new { @class = "btn btn-primary" })
+    </div>
+</div>

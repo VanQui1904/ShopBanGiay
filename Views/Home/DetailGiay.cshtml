@@ -1,9 +1,12 @@
-﻿@using ShoeStoreProject.Models 
+﻿<!--@using ShoeStoreProject.Models
+@model ShoeStoreProject.ViewModel.ProductsVM
+
+
+
 @{
     ViewBag.Title = "DetailGiay";
-    //Layout = "~/Views/NewFolder1/_LayoutPage1.cshtml";
+    Layout = "~/Views/NewFolder1/_Layout.cshtml";
 }
-
 <head>
     <style>
         .card {
@@ -26,24 +29,60 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .sp-left {
+            margin-right: 20px; /* Adjust margin to your liking */
+        }
+
+            .sp-left img {
+                border: 1px solid #9df7f6; /* Adjust thickness and color of the border */
+            }
+
+        .sp-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .url {
+            margin-bottom: 10px; /* Space between each block of information */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .description {
+            margin-top: 20px; /* Space above the description */
+        }
     </style>
-</head>
-<h2>THÔNG TIN SẢN PHẨM CỦA BẠN</h2>
+</head>-->
+@*<h2 class="mt-4 mb-4">QUẢN LÝ CHỦ ĐỀ</h2>*@
+@*<h2>THÔNG TIN SẢN PHẨM CỦA BẠN</h2>*@
+<!--<h4 class="mt-4 mb-4" style="color: #7d5dcd">CHI TIẾT SẢN PHẨM <a href="@Url.Action("Index","Home")" class="btn btn-outline-warning">Tiếp tục mua hàng</a></h4>
 
-<div class="sp">
-    @foreach (var item in Model)
-    {
-        <div>
-            @item.proImage
+<div class="container">
+    <div class="sp-left">
+        <img src="~/Image/Giay_sport/@Model.proImage" height="350" />
+    </div>
+    <div class="sp-right">
+        <div class="url" style="color: #ff6a00;">
+            Trang chủ ><div style="color: #ffd800;">Chi tiết sản phẩm ></div> <div style="color: #3d2676;"> @Model.proName</div>
         </div>
-        <div>
-            @item.proName
-            @item.Size
-            @item.Color
-            @item.Price
+        <div class="url">
+            Kích cỡ: >><div style="color: #78b117;"> @Model.Size</div>
+        </div>
+        <div class="url">
+            Giá: >><div style="color: #7242e9;"> @Model.Price 000 VND </div>
+        </div>
+        <div class="url">
+            Mô tả: >><div style="color: #7242e9;"> @Model.proDescription </div>
         </div>
 
-    }
-</div>
 
-
+    </div>
+</div>-->

@@ -1,12 +1,15 @@
-﻿@using ShoeStoreProject.Models
+﻿<!--@using ShoeStoreProject.Models-->
+@*@model List<Products>
+
+    @using PagedList.Mvc*@
+<!--@model PagedList.IPagedList<ShoeStoreProject.Models.Product>
 
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/NewFolder1/_LayoutPage1.cshtml";
+    ViewBag.Title = "SP";
+    Layout = "~/Views/NewFolder1/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 <head>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Style/css/LayoutSite.css" rel="stylesheet" />
@@ -34,21 +37,36 @@
         }
     </style>
 </head>
-<h2>Xin chào quý khách</h2>
-<div>
-    @if (Model != null)
-    {
-        foreach (var item in Model)
+
+<h2>Xin chào quý khách</h2>-->
+@*<h3> Tổng số sách hiện có là: @ViewBag.soluong</h3>*@
+
+
+
+
+
+
+<!--<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
         {
-            <div>
-                <div>@item.proImage</div>
-                <div>
-                    Tên Sách: @item.proName
+            <div class="col-sm-6 col-md-4 col-lg-3" id="margin-card">
+                <div class="card">
+                    <strong style="color: #593aa9"> @Html.DisplayFor(model => item.proName)</strong>
+
+                    <a href="@Url.Action("DetailGiay", "Home", new { productID = item.ProductID},null)" title="Chi tiết sản phẩm">
+                        <img src="~/Image/Giay_sport/@item.proImage" style="height:200px;width:200px;margin:10px; " />
+                    </a>
+                    Size: @Html.DisplayFor(model => item.Size)
+                    <p>Price: @Html.DisplayFor(model => item.Price)</p>
+
+                    <a href="/Cart/AddToCart/@item.ProductID">
+                        <img src="@Url.Content("~/Image/icons8-cart-30.png")" style="width: 30px; height: 30px; float: left; " title="Thêm vào giỏ hàng..." />
+
+                    </a>
                 </div>
-                <div>Gía Bán: @item.Price</div>
-                @Html.ActionLink("Chi tiết đơn hàng","DetailGiay", "Home", new {id = item.ProductID},null)
+
             </div>
         }
-    }
-
-</div>
+    </div>
+</div>-->

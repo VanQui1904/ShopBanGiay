@@ -1,60 +1,69 @@
-﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.AccountViewModel>
+﻿@model  IEnumerable<ShoeStoreProject.Areas.Admin.Data.AccountViewModel>
 
 @{
     ViewBag.Title = "Accounts";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
 
-<div class="bg-light shadow-md m-3 rounded-md">
+
     <div class="d-flex m-1 justify-content-between">
         <h2>Accounts</h2>
+        @using (Html.BeginForm("Products", "QLProducts", FormMethod.Get))
+        {
+            <div class="form-inline my-2 my-lg-0 d-flex">
+                <input class="form-control mr-sm-2" type="text" name="searchTerm" placeholder="Search here" value="@ViewBag.SearchTerm" />
+                <input class="btn btn-primary" type="submit" value="Search" />
+            </div>
+        }
     </div>
 
     <table class="table table-hover">
-        <tr class="table-dark">
-            <th>
-                @Html.DisplayNameFor(model => model.AccountID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model=>model.Email)
-            </th>
+        <tr class="table-primary">
+            <th>@Html.DisplayNameFor(model => model.First().AccountID)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Username)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Role)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
             <th>Action</th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.AccountID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <td>@Html.DisplayFor(modelItem => item.Role)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AccountID)
+                    <button type="button" class="btn btn-outline-success btn-sm" onclick="updateRole('@item.AccountID', 'Admin')">Appoint</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="updateRole('@item.AccountID', 'Customer')">Dismiss</button>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Role)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Role", "RoleAccount", "QLAccounts", new { id = item.AccountID /* id=item.PrimaryKey */ }, new {@class="btn btn-outline-warning btn-sm"})
-                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger btn-sm" })
-                </td>
+
+
             </tr>
         }
-
     </table>
-</div>
+
+
+<script>
+    function updateRole(accountID, role) {
+        $.ajax({
+            url: '@Url.Action("UpdateRole", "QLAccounts")',
+            type: 'POST',
+            data: {
+                AccountID: accountID,
+                Role: role
+            },
+            success: function (response) {
+                // Cập nhật giao diện hoặc thông báo thành công
+                alert('Role updated successfully!');
+                location.reload(); // Reload trang để cập nhật dữ liệu
+            },
+            error: function () {
+                // Xử lý lỗi
+                alert('Error updating role.');
+            }
+        });
+    }
+</script>

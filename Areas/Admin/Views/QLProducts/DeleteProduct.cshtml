@@ -1,0 +1,99 @@
+﻿@model ShoeStoreProject.Areas.Admin.Data.ProductsViewModel
+
+@{
+    ViewBag.Title = "Delete Product";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-danger">Delete Product</h2>
+        </div>
+        <div class="card-body">
+            <h3>Are you sure you want to delete this product?</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.ProductID)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.ProductID)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.proName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.proName)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.proImage)
+                </dt>
+                <dd class="col-sm-9">
+                    <img src="~/Image/Giay_sport/@Model.proImage" alt="@Model.proName" class="img-thumbnail" style="max-width: 150px;" />
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.BrandID)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.BrandID)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.CategoryID)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CategoryID)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Size)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Size)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Color)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Color)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.proDescription)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.proDescription)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @using (Html.BeginForm("DeleteProduct", "QLProducts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Cancel", "Products", "QLProducts", null, new { @class = "btn btn-secondary ml-2" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

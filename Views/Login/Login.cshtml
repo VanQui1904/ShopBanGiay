@@ -1,34 +1,35 @@
-﻿<link href="~/Contents/StyleLogin.css" rel="stylesheet" />
+﻿@model ShoeStoreProject.ViewModel.LoginViewModel
+<link href="~/Contents/StyleLogin.css" rel="stylesheet" />
 
-<section class="container forms">
+<section class="app forms">
     <div class="form login">
         <div class="form-content">
             <header>Login</header>
 
-            <form action="signup.php" method="post" onsubmit="return validateForm()">
-
-                <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input" name="email" id="email">
-                    <span id="emailError" class="error"></span><br>
-                </div>
-
-                <div class="field input-field">
-                    <input type="password" placeholder="Password" class="input" name="password" id="password">
-                    <span id="passwordError" class="error"></span><br>
-                </div>
-
-                <div class="from-link">
-                    <a href="#" class="forgot-pass">Forgot passwword?</a>
-                </div>
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+        <div class="field input-field">
+            <input type="text" placeholder="Email" class="input" name="Username" id="email">
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
+        <div class="field input-field">
+            <input type="password" placeholder="Password" class="input" name="Password" id="email">
+            <span id="emailSigError" class="error" style="color: red;
+            padding: 10px 0;"></span><br>
+        </div>
 
                 <div class="field button-field">
-                    <input type="submit" id="submit" name="dangnhap" value="Login">
+                    <input type="submit" id="submit" value="Login">
                 </div>
+            }
 
-                <div class="from-link">
-                    <span>Do have an account?<a href="@Url.Action("Signup","Login")" class="sigup-link">Signup</a></span>
-                </div>
-            </form>
+
+            <div class="from-link">
+                <span>Do have an account?<a href="@Url.Action("Register","Login")" class="sigup-link">Signup</a></span>
+            </div>
+
         </div>
         <div class="line"></div>
         <div class="media-option">

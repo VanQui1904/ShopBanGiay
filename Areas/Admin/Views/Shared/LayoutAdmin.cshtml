@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -6,19 +7,31 @@
 
     <link href="~/Contents/StyleAdmin.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        bg-custom {
+            background-color: #287bff;
+        }
+    </style>
+
 </head>
 <body>
     <div class="app">
         <div class="navigation bg-primary text-bg-dark">
             <div id="user">
-                <img src="image/logo_test2-removebg-preview.png">
+                <img src="~/Image/banremovebgpreview.png">
                 <div class="line"></div>
             </div>
             <ul>
                 <li>
-                    <a href="@Url.Action("Index","DashBoard")">
+                    <a href="@Url.Action("RevenueByDate","DashBoard")">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Brand")">
+                        <span class="icon"><ion-icon name="pricetags-outline"></ion-icon></span>
+                        <span class="title">Brand & Categories</span>
                     </a>
                 </li>
                 <li>
@@ -49,7 +62,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="login.html">
+                    <a href="@Url.Action("Logout","Login")">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span class="title">Logout</span>
                     </a>
@@ -57,24 +70,23 @@
             </ul>
         </div>
         <div class="main">
-            <div class="topbar">
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Tìm kiếm">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+            <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #287bff;">
+                <div class="container-fluid justify-content-end">
+                    <a class="navbar-brand" href="@Url.Action("ViewProfile", "Profile", new {id = Session["CustomerID"] })">
+                        <ion-icon style="width:30px; height:30px; border-radius:20px;" name="menu-outline"></ion-icon>
+                    </a>
                 </div>
-                <div class="user">
-                    <img style="height: 50px;width: 50px;border-radius: 50px; border: 1px solid black;" src="./image/meetjack.jpg">
-                </div>
-            </div>
+            </nav>
 
-            <div>
+            <div class="bg-light shadow-md m-3 rounded-md">
                 @RenderBody()
+                @RenderSection("Scripts", required: false)
             </div>
         </div>
     </div>
 </body>
 </html>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.container {
+.app {
     height: 100vh;
     width: 100%;
     display: flex;

@@ -22,8 +22,13 @@ namespace ShoeStoreProject.Models
         public DateTime? OrderDate { get; set; }
 
         public decimal? TotalAmount { get; set; }
-        public string AddressOrder {  get; set; }
+
+        [StringLength(500)]
+        public string AddressOrder { get; set; }
+
+        [StringLength(10)]
         public string OrderPhone { get; set; }
+        public string Status { get; set; }
 
         public virtual Customer Customer { get; set; }
 

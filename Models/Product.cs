@@ -18,7 +18,9 @@ namespace ShoeStoreProject.Models
 
         [StringLength(100)]
         public string proName { get; set; }
-        public string proImage { get; set; }    
+
+        [StringLength(200)]
+        public string proImage { get; set; }
 
         public int? BrandID { get; set; }
 

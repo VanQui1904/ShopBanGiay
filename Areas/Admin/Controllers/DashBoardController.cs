@@ -10,29 +10,32 @@ namespace ShoeStoreProject.Areas.Admin.Controllers
 {
     public class DashBoardController : Controller
     {
-        // GET: Admin/DashBoard
         private ModelShoeStore context = new ModelShoeStore();
-        public ActionResult Index()
+
+        [HttpGet]
+        //[Authorize(Role = "Admin")]
+        public ActionResult RevenueByDate()
         {
-            var brand = (from m in context.Brands
-                         orderby m.BrandID descending
-                        select new BrandViewModel
-                        {
-                            BrandId = m.BrandID,
-                            BrandName = m.BrandName,
-                        }).ToList();
-            
-            return View(brand);
-        }
-        public ActionResult Category()
-        {
-            var category = (from m in context.Categories
-                            select new CategoryViewModel
-                            {
-                                CategoryID = m.CategoryID,
-                                CategoryName = m.CategoryName,
-                            }).ToList();
-            return PartialView(category);
+            //if (Session["Role"] == null || Session["Role"].ToString() != "Customer")
+            //{
+            //    return RedirectToAction("Login", "Login");
+            //}
+            var salesData = context.Orders
+                .Where(o => o.OrderDate.HasValue) // Đảm bảo OrderDate có giá trị
+                .ToList() // Chuyển dữ liệu từ cơ sở dữ liệu sang danh sách
+                .GroupBy(o => o.OrderDate.Value.Date) // Nhóm dữ liệu theo ngày
+                .Select(g => new RevenueByDateViewModel
+                {
+                    Date = g.Key,
+                    TotalRevenue = g.Sum(o => o.TotalAmount)
+                })
+                .ToList();
+            ViewBag.hoadon = context.Orders.Count();
+            var totalAmount = context.Orders.Sum(invoice => invoice.TotalAmount);
+
+            // Gán tổng số tiền cho ViewBag
+            ViewBag.TotalAmount = totalAmount;
+            return View(salesData);
         }
     }
 }

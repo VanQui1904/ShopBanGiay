@@ -22,9 +22,12 @@ namespace ShoeStoreProject.Models
         [StringLength(20)]
         public string Role { get; set; }
 
+        [StringLength(10)]
         public string Phone { get; set; }
-        public string Email {  get; set; }
 
-        
+        [StringLength(100)]
+        public string Email { get; set; }
+
+        public int? CustomerID { get; set; }
     }
 }

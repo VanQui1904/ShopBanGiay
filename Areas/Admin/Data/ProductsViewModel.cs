@@ -19,6 +19,7 @@ namespace ShoeStoreProject.Areas.Admin.Data
         public int? BrandID { get; set; }
 
         public int? CategoryID { get; set; }
+        
 
         [StringLength(10)]
         public string Size { get; set; }

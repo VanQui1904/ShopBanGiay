@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.CategoryViewModel>
+
+<div class="col d-flex m-1 justify-content-between">
+    <h2>Category</h2>
+    <p>
+        @Html.ActionLink("Add New", "AddCategory","Brand",new { @class = "btn btn-outline-primary btn-sm" })
+    </p>
+</div>
+<table class="table table-hover">
+    <tr class="bg-primary">
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCategory","Brand", new {id = item.CategoryID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-success btn-sm" })
+                @Html.ActionLink("Delete", "DeleteCategory","Brand", new {id=item.CategoryID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+

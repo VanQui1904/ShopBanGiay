@@ -101,3 +101,6 @@ INSERT INTO OrderDetails (OrderID, ProductID, Quantity, UnitPrice) VALUES
 INSERT INTO Accounts (Username, Password, Role, CustomerID) VALUES
 ('johndoe', 'password123', 'Customer', 1),
 ('janesmith', 'password456', 'Customer', 2);
+
+select * from Accounts
+select * from Customers

@@ -1,0 +1,210 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Contents/StyleSheet1.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <section class="header">
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-md-2 logo">
+                    <img src="~/Image/Logo.jpg" all="Logo" class="img-fluid" />
+                </div>
+                @*<div class="col-md-6">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>*@
+                <div class="col-md-6">
+                    <form class="d-flex" role="search" method="get" action="@Url.Action("Index", "Home")">
+                        <input class="form-control me-2" type="text" name="searchName" placeholder="Tên sản phẩm" aria-label="Search Name">
+                        <input class="form-control me-2" type="number" name="minPrice" placeholder="Giá tối thiểu" aria-label="Min Price">
+                        <input class="form-control me-2" type="number" name="maxPrice" placeholder="Giá tối đa" aria-label="Max Price">
+                        <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+
+
+                @*@using (Html.BeginForm())
+                    {
+                        <div class="form-group form-check-inline">
+                            Tìm sản phẩm: @Html.TextBox("SearchString", "", new { @class="form-control"})
+                            <input type="submit" class="btn btn-success" value="Search"/>
+
+                        </div>
+
+                        }*@
+
+
+
+
+                <div class="col-md-4">
+                    Tư vấn: <strong>0334427339</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="menu bg-main">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-main">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Trang chủ</a>
+
+
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Về chúng tôi</a>
+                            </li>
+
+                            @Html.ActionLink("Liên hệ", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Đăng nhập</a>
+                            </li>
+
+                            @*<img src="@Url.Content("~/Image/icons8-cart-30.png")" style="width: 20px; height: 20px; float: right; margin-top:10px" />
+                            @Html.Action("BagCart", "Cart")*@
+
+
+
+
+
+                            @*<ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>*@
+                            @*</li>*@
+                            <li class="nav-item">
+
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <section class="row">
+        <section class="col-md-9 col-lg-9 col-sm-12 col-xl-12">
+            <div>
+                @RenderBody()
+            </div>
+        </section>
+    </section>
+
+    <section class="blog" id="blog">
+        <div class="heading">
+            @*<span style="color: red; justify-content: center;">Sự kiện & Tin tức</span>*@
+            <!--<h2>Our Blog Content</h2>-->
+            <!--<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, doloremque.</p>-->
+
+        </div>
+        <!--Blog Container-->
+        <div class="blog-container container">
+            <!--Box 1-->
+            <div class="box">
+
+                <sanp>10/10/2020</sanp>
+                <h3>Thời trang bền vững đang là xu hướng được làng mốt quan tâm</h3>
+                <p>Không chỉ thể hiện trên quần áo, vài năm trở lại đây, xu hướng này còn được áp dụng trên giày thể thao.</p>
+                <a href="#" class="blog-btn">Đọc thêm<i class='bx bx-right-arrow-alt'></i></a>
+
+            </div>
+            <div class="box">
+
+                <sanp>5/11/2021</sanp>
+                <h3>Sneakers chạy bộ, đi bộ đường dài tiếp tục thể hiện sức hút.</h3>
+                <p>sau hai năm được yêu thích trong thời gian dịch bùng phát.</p>
+                <a href="#" class="blog-btn">Đọc thêm<i class='bx bx-right-arrow-alt'></i></a>
+
+            </div>
+            <div class="box">
+
+                <sanp>12/12/2023</sanp>
+                <h3>Theo Elle, sneakers trắng là xu hướng nổi bật. </h3>
+                <p>Một đôi giày trắng như Nike Air Force 1 đượ đánh giá không bao giờ lỗi mốt. </p>
+                <a href="#" class="blog-btn">Đọc thêm<i class='bx bx-right-arrow-alt'></i></a>
+
+            </div>
+
+
+
+
+            <div class="box">
+
+                <sanp>01/01/2024</sanp>
+                <h3>Sneakers đơn giản mang hơi thở retro tiếp tục được ưa chuộng</h3>
+                <p>iống sneakers trắng, những thiết kế này được xếp vào hàng kinh điển, giá cả phải chăng, có thể phối cùng nhiều loại trang phục..</p>
+                <a href="#" class="blog-btn">Đọc thêm<i class='bx bx-right-arrow-alt'></i></a>
+
+            </div>
+        </div>
+    </section>
+    <!--Footer-->
+    <section class="footer bg-footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3 class="text-light">CHÚNG TÔI LÀ AI?</h3>
+                    <p style="color:#eee9e9">Số điện thoại: 0334427339</p>
+                    <p style="color:#eee9e9">Địa chỉ: Đồng Tháp</p>
+                    <p style="color:#eee9e9">Việt Nam</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 style="color: white" ;"text-light;">CHÍNH SÁCH</h3>
+                    <p style="color:#eee9e9">Khuyến mãi</p>
+                    @*<p style="color:#eee9e9">Chi nhánh</p>
+                        <p style="color:#eee9e9">Japan</p>*@
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-light">KHU BÁN HÀNG</h3>
+                    <p style="color:#eee9e9">Trang chủ</p>
+                    <p style="color:#eee9e9">Về chúng tôi</p>
+                    <p style="color:#eee9e9">Liên hệ</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-light">HỖ TRỢ</h3>
+                    <p style="color: white">Đổi trả</p>
+                    <p style="color:#eee9e9">Giao hàng</p>
+                    <p>Germany</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="copyright bg-footer py-2 ">
+        <div class="container py-2 border-top border-light">
+            <div class="col-md-6 text-light">
+                Bản quyền tạo bởi htccc.chau@gmail.com
+            </div>
+            <div class="col-md-6">
+                <!--Link To Js-->
+                <script src="main.js"></script>
+
+                <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+
+                @RenderSection("footer", required: false)
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

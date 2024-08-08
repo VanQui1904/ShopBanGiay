@@ -17,6 +17,7 @@ namespace ShoeStoreProject.Areas.Admin.Data
         public DateTime? OrderDate { get; set; }
 
         public decimal? TotalAmount { get; set; }
+        public string Status { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; } 

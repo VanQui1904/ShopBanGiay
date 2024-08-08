@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -50,11 +60,27 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -67,6 +93,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -74,6 +103,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -102,6 +134,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\Style.css" />
     <Content Include="Contents\StyleAdmin.css" />
     <Content Include="Contents\StyleLogin.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -123,90 +156,117 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Contents\StyleSheet1.css" />
     <Content Include="Global.asax" />
-    <Content Include="Image\100-full-mechanics-gundam-bael-1.jpg" />
-    <Content Include="Image\Adidas1.jpg" />
-    <Content Include="Image\Adidas2.jpg" />
-    <Content Include="Image\Adidas3.jpg" />
-    <Content Include="Image\Adidas4.jpg" />
-    <Content Include="Image\Adidas5.jpg" />
-    <Content Include="Image\Adidas6.jpg" />
-    <Content Include="Image\Air_max1.png" />
-    <Content Include="Image\Air_max2.png" />
-    <Content Include="Image\Air_max3.png" />
-    <Content Include="Image\Air_max4.png" />
-    <Content Include="Image\Air_max5.png" />
-    <Content Include="Image\Asics1.jpg" />
-    <Content Include="Image\Asics2.jpg" />
-    <Content Include="Image\Asics3.jpg" />
-    <Content Include="Image\Asics4.jpg" />
-    <Content Include="Image\Asics5.jpg" />
-    <Content Include="Image\Asics6.jpg" />
-    <Content Include="Image\Asics7.jpg" />
-    <Content Include="Image\Balance1.jpg" />
-    <Content Include="Image\Balance2.jpg" />
-    <Content Include="Image\Balance3.jpg" />
-    <Content Include="Image\Balance4.jpg" />
-    <Content Include="Image\Balance5.jpg" />
-    <Content Include="Image\Balance6.jpg" />
-    <Content Include="Image\Balance7.jpg" />
-    <Content Include="Image\Balance8.jpg" />
-    <Content Include="Image\Balance9.jpg" />
-    <Content Include="Image\ban.jpg" />
-    <Content Include="Image\banne.jpg" />
-    <Content Include="Image\banne1.jpg" />
-    <Content Include="Image\banner.jpg" />
-    <Content Include="Image\Bitis1.jpg" />
-    <Content Include="Image\Bitis2.jpg" />
-    <Content Include="Image\Bitis3.jpg" />
-    <Content Include="Image\Bitis4.jpg" />
-    <Content Include="Image\Bitis5.jpg" />
-    <Content Include="Image\icon_pdf.png" />
-    <Content Include="Image\Jordan1.jpg" />
-    <Content Include="Image\Jordan2.jpg" />
-    <Content Include="Image\Jordan3.jpg" />
-    <Content Include="Image\Jordan4.jpg" />
-    <Content Include="Image\Jordan5.jpg" />
-    <Content Include="Image\Jordan6.jpg" />
-    <Content Include="Image\Mizuno1.jpg" />
-    <Content Include="Image\Mizuno2.jpg" />
-    <Content Include="Image\Mizuno3.jpg" />
-    <Content Include="Image\Mizuno4.jpg" />
-    <Content Include="Image\Mizuno5.jpg" />
-    <Content Include="Image\Mizuno6.jpg" />
-    <Content Include="Image\Mizuno7.jpg" />
-    <Content Include="Image\Nike1.jpg" />
-    <Content Include="Image\Nike2.jpg" />
-    <Content Include="Image\Nike3.jpg" />
-    <Content Include="Image\Nike4.jpg" />
-    <Content Include="Image\Nike5.jpg" />
-    <Content Include="Image\Nike6.jpg" />
-    <Content Include="Image\Nike7.jpg" />
-    <Content Include="Image\Puma1.jpg" />
-    <Content Include="Image\Puma2.jpg" />
-    <Content Include="Image\Puma3.jpg" />
-    <Content Include="Image\Puma4.jpg" />
-    <Content Include="Image\Puma6.jpg" />
-    <Content Include="Image\Puma7.jpg" />
-    <Content Include="Image\Reebok1.jpg" />
-    <Content Include="Image\Reebok2.jpg" />
-    <Content Include="Image\Reebok3.jpg" />
+    <Content Include="Image\banremovebgpreview.png" />
+    <Content Include="Image\Giay_sport\Adidas1.jpg" />
+    <Content Include="Image\Giay_sport\Adidas2.jpg" />
+    <Content Include="Image\Giay_sport\Adidas3.jpg" />
+    <Content Include="Image\Giay_sport\Adidas4.jpg" />
+    <Content Include="Image\Giay_sport\Adidas5.jpg" />
+    <Content Include="Image\Giay_sport\Adidas6.jpg" />
+    <Content Include="Image\Giay_sport\Air_max1.png" />
+    <Content Include="Image\Giay_sport\Air_max2.png" />
+    <Content Include="Image\Giay_sport\Air_max3.png" />
+    <Content Include="Image\Giay_sport\Air_max4.png" />
+    <Content Include="Image\Giay_sport\Air_max5.png" />
+    <Content Include="Image\Giay_sport\Asics1.jpg" />
+    <Content Include="Image\Giay_sport\Asics2.jpg" />
+    <Content Include="Image\Giay_sport\Asics3.jpg" />
+    <Content Include="Image\Giay_sport\Asics4.jpg" />
+    <Content Include="Image\Giay_sport\Asics5.jpg" />
+    <Content Include="Image\Giay_sport\Asics6.jpg" />
+    <Content Include="Image\Giay_sport\Asics7.jpg" />
+    <Content Include="Image\Giay_sport\Balance1.jpg" />
+    <Content Include="Image\Giay_sport\Balance2.jpg" />
+    <Content Include="Image\Giay_sport\Balance3.jpg" />
+    <Content Include="Image\Giay_sport\Balance4.jpg" />
+    <Content Include="Image\Giay_sport\Balance5.jpg" />
+    <Content Include="Image\Giay_sport\Balance6.jpg" />
+    <Content Include="Image\Giay_sport\Balance7.jpg" />
+    <Content Include="Image\Giay_sport\Balance8.jpg" />
+    <Content Include="Image\Giay_sport\Balance9.jpg" />
+    <Content Include="Image\Giay_sport\ban.jpg" />
+    <Content Include="Image\Giay_sport\banne.jpg" />
+    <Content Include="Image\Giay_sport\banne1.jpg" />
+    <Content Include="Image\Giay_sport\banner.jpg" />
+    <Content Include="Image\Giay_sport\Bitis1.jpg" />
+    <Content Include="Image\Giay_sport\Bitis2.jpg" />
+    <Content Include="Image\Giay_sport\Bitis3.jpg" />
+    <Content Include="Image\Giay_sport\Bitis4.jpg" />
+    <Content Include="Image\Giay_sport\Bitis5.jpg" />
+    <Content Include="Image\Giay_sport\icon_pdf.png" />
+    <Content Include="Image\Giay_sport\Jordan1.jpg" />
+    <Content Include="Image\Giay_sport\Jordan2.jpg" />
+    <Content Include="Image\Giay_sport\Jordan3.jpg" />
+    <Content Include="Image\Giay_sport\Jordan4.jpg" />
+    <Content Include="Image\Giay_sport\Jordan5.jpg" />
+    <Content Include="Image\Giay_sport\Jordan6.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno1.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno2.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno3.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno4.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno5.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno6.jpg" />
+    <Content Include="Image\Giay_sport\Mizuno7.jpg" />
+    <Content Include="Image\Giay_sport\Nike1.jpg" />
+    <Content Include="Image\Giay_sport\Nike2.jpg" />
+    <Content Include="Image\Giay_sport\Nike3.jpg" />
+    <Content Include="Image\Giay_sport\Nike4.jpg" />
+    <Content Include="Image\Giay_sport\Nike5.jpg" />
+    <Content Include="Image\Giay_sport\Nike6.jpg" />
+    <Content Include="Image\Giay_sport\Nike7.jpg" />
+    <Content Include="Image\Giay_sport\Puma1.jpg" />
+    <Content Include="Image\Giay_sport\Puma2.jpg" />
+    <Content Include="Image\Giay_sport\Puma3.jpg" />
+    <Content Include="Image\Giay_sport\Puma4.jpg" />
+    <Content Include="Image\Giay_sport\Puma6.jpg" />
+    <Content Include="Image\Giay_sport\Puma7.jpg" />
+    <Content Include="Image\Giay_sport\Reebok1.jpg" />
+    <Content Include="Image\Giay_sport\Reebok2.jpg" />
+    <Content Include="Image\Giay_sport\Reebok3.jpg" />
+    <Content Include="Image\icons8-cart-30.png" />
+    <Content Include="Image\Logo.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\AddBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\EditBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\EditCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\RevenueByDate.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\EditProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\QLProducts\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\QLOrders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\DeleteCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\DeleteBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\ViewProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\QLCustomers\DeleteCustomer.cshtml" />
+    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLAccountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLCustomersController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLOrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\QLProductsController.cs" />
     <Compile Include="Areas\Admin\Data\AccountViewModel.cs" />
+    <Compile Include="Areas\Admin\Data\BrandCategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Data\BrandViewModel.cs" />
     <Compile Include="Areas\Admin\Data\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Data\CustomersViewModel.cs" />
@@ -215,8 +275,10 @@
     <Compile Include="Areas\Admin\Data\OrdersViewModel.cs" />
     <Compile Include="Areas\Admin\Data\ProductsDisplay.cs" />
     <Compile Include="Areas\Admin\Data\ProductsViewModel.cs" />
+    <Compile Include="Areas\Admin\Data\RevenueByDateViewModel.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,6 +294,10 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailsViewModel.cs" />
+    <Compile Include="ViewModel\ProductsVM.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -244,7 +310,6 @@
     <Content Include="Areas\Admin\Views\QLCustomers\AddCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\QLCustomers\EditCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\QLProducts\EditProducts.cshtml" />
-    <Content Include="Areas\Admin\Views\QLAccounts\RoleAccount.cshtml" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -263,8 +328,6 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Areas\Admin\Views\QLOrders\Orders.cshtml" />
     <Content Include="Areas\Admin\Views\QLOrders\DetailsOrder.cshtml" />
-    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DashBoard\Category.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -273,14 +336,18 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\Signup.cshtml" />
-    <Content Include="Views\NewFolder1\_LayoutPage1.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\NewFolder1\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DetailGiay.cshtml" />
-    <Content Include="Views\NewFolder1\_LayoutPage2.cshtml" />
-    <Content Include="Views\Giohang\ShowToCart.cshtml" />
-    <Content Include="Views\Giohang\BagCart.cshtml" />
-    <Content Include="Views\Giohang\Shopping_Success.cshtml" />
+    <Content Include="Views\NewFolder1\_LayoutCreateCus.cshtml" />
+    <Content Include="Views\Cart\ShowToCart.cshtml" />
+    <Content Include="Views\Cart\BagCart.cshtml" />
+    <Content Include="Views\Cart\Shopping_Success.cshtml" />
+    <Content Include="Views\NewFolder1\Error.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\Cart\OrderDetails.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

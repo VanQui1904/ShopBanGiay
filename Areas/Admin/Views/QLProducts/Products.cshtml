@@ -1,90 +1,89 @@
-﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.ProductsDisplay>
-    @using PagedList.Mvc;
+﻿
+@model PagedList.IPagedList<ShoeStoreProject.Areas.Admin.Data.ProductsDisplay>
+
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Products";
     Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
 }
-
-<div class="bg-light shadow-md m-3 rounded-md">
-    <div class="d-xl-flex justify-content-between align-content-center m-1">
-        <h2>Products</h2>
-
-        <p>
-            @Html.ActionLink("Add New", "AddProducts", "QLProducts", new {@class="btn btn-outline-primary btn-sm"})
-        </p>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
     </div>
-
-<table class="table table-hover">
-    <tr class="table-dark">
-        <th>
-            @Html.DisplayNameFor(model=> model.ProductID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductsName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model=>model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
-        </th>
-        <th>Action</th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductsName)
-        </td>
-        <td style="width:50px; height:50px;">
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditProducts", "QLProducts", new { id = item.ProductID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-success btn-sm" })
-            @Html.ActionLink("Delete", "DeleteProduct", "QLProducts", new { id = item.ProductID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger btn-sm" })
-
-        </td>
-    </tr>
 }
 
+<h2>Products</h2>
+<div class="d-xl-flex justify-content-between align-content-center m-1">
+
+    @using (Html.BeginForm("Products", "QLProducts", FormMethod.Get))
+    {
+        <div class="form-inline my-2 my-lg-0 d-flex">
+            <input class="form-control mr-sm-2" type="text" name="searchTerm" placeholder="Search here" value="@ViewBag.SearchTerm" />
+            <input class="btn btn-primary" type="submit" value="Search" />
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Add New", "AddProducts", "QLProducts", new { @class = "btn btn-outline-primary btn-sm" })
+    </p>
+</div>
+
+<table class="table table-hover">
+    <tr class="table-primary">
+        <th>ProductID
+        <th>ProductsName</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>BrandName</th>
+        <th>Stock</th>
+        <th>CategoryName</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.proName)
+            </td>
+            <td>
+                <img src="~/Image/@item.proImage" style="height:50px;width:50px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProducts", "QLProducts", new { id = item.ProductID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-success btn-sm" })
+                @Html.ActionLink("Delete", "DeleteProduct", "QLProducts", new { id = item.ProductID /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger btn-sm" })
+
+            </td>
+        </tr>
+    }
+
 </table>
-    <div>
-        
+<div class="row">
+    <div class="col-6"></div>
+    <div class="col-6 pagination">
+        @Html.PagedListPager(Model, page => @Url.Action("Products", "QLProducts", new { page = page }))
     </div>
-    </div>
+</div>

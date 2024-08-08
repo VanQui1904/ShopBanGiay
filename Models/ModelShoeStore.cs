@@ -8,7 +8,7 @@ namespace ShoeStoreProject.Models
     public partial class ModelShoeStore : DbContext
     {
         public ModelShoeStore()
-            : base("name=ModelShoeStore")
+            : base("name=ModelShoeStore2")
         {
         }
 
@@ -34,6 +34,10 @@ namespace ShoeStoreProject.Models
             modelBuilder.Entity<Account>()
                 .Property(e => e.Role)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Phone)
+                .IsFixedLength();
 
             modelBuilder.Entity<Brand>()
                 .Property(e => e.BrandName)
@@ -75,6 +79,10 @@ namespace ShoeStoreProject.Models
                 .Property(e => e.UnitPrice)
                 .HasPrecision(10, 2);
 
+            //modelBuilder.Entity<OrderDetail>()
+            //    .Property(e => e.TotalAmount)
+            //    .HasPrecision(10, 2);
+
             modelBuilder.Entity<Order>()
                 .Property(e => e.TotalAmount)
                 .HasPrecision(10, 2);
@@ -82,9 +90,6 @@ namespace ShoeStoreProject.Models
             modelBuilder.Entity<Product>()
                 .Property(e => e.proName)
                 .IsUnicode(false);
-            modelBuilder.Entity<Product>()
-                .Property(e=>e.proImage)
-                .IsUnicode (false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Size)

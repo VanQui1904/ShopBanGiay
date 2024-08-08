@@ -1,0 +1,97 @@
+﻿@model ShoeStoreProject.Areas.Admin.Data.BrandCategoryViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <!-- Tìm kiếm -->
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            @using (Html.BeginForm("Index", "Brand", FormMethod.Get))
+            {
+                <div class="input-group">
+                    <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search by Brand or Category Name" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Hiển thị Brands -->
+    <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="text-primary">Brands</h2>
+            <a href="@Url.Action("AddBrand", "Brand")" class="btn btn-outline-primary btn-sm">Add New</a>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Brands.First().BrandId)</th>
+                    <th>@Html.DisplayNameFor(model => model.Brands.First().BrandName)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Brands)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.BrandId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BrandName)</td>
+                        <td>
+                            <a href="@Url.Action("EditBrand", "Brand", new { id = item.BrandId })" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="@Url.Action("DeleteBrand", "Brand", new { id = item.BrandId })" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Hiển thị Categories -->
+    <div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="text-primary">Categories</h2>
+            <a href="@Url.Action("AddCategory", "Brand")" class="btn btn-outline-primary btn-sm">Add New</a>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Categories.First().CategoryID)</th>
+                    <th>@Html.DisplayNameFor(model => model.Categories.First().CategoryName)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Categories)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.CategoryID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                        <td>
+                            <a href="@Url.Action("EditCategory", "Brand", new { id = item.CategoryID })" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="@Url.Action("DeleteCategory", "Brand", new { id = item.CategoryID })" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

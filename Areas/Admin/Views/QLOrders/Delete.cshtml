@@ -1,0 +1,64 @@
+﻿@model ShoeStoreProject.Areas.Admin.Data.OrdersViewModel
+
+@{
+    ViewBag.Title = "Delete Order";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-danger">Delete Order</h2>
+        </div>
+        <div class="card-body">
+            <h3>Are you sure you want to delete this order?</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.OrderID)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.OrderID)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.CustomerID)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CustomerID)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.TotalAmount)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.TotalAmount)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @using (Html.BeginForm("Delete", "QLOrders", new { id = Model.OrderID }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Cancel", "Orders","QLOrders", null, new { @class = "btn btn-secondary ml-2" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

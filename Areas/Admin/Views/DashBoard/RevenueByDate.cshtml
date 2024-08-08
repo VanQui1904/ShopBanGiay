@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ShoeStoreProject.Areas.Admin.Data.RevenueByDateViewModel>
+
+@{
+    ViewBag.Title = "Doanh thu theo ngày";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="card__box">
+    <a class="card__content" href="dailyview.html" target="iframe" style="background-color: #3e54d3;">
+        <div>
+            <div class="numbers">1.504</div>
+            <div class="cardname">Lượt xem gần đây</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="eye-outline"></ion-icon>
+
+        </div>
+    </a>
+    <a class="card__content" href="recentoder.php" target="iframe" style="background-color: #4f80e2;">
+        <div>
+            <div class="numbers">@ViewBag.hoadon</div>
+            <div class="cardname">Bán hàng</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="cart-outline"></ion-icon>
+
+        </div>
+    </a>
+    <a class="card__content" href="comment.html" target="iframe" style="background-color: #15cdca;">
+        <div>
+            <div class="numbers">284</div>
+            <div class="cardname">Bình luận</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+
+        </div>
+    </a>
+    <div class="card__content" style="background-color: #4fe0b6;">
+        <div>
+            <div class="numbers">$@ViewBag.TotalAmount</div>
+            <div class="cardname">Doanh thu</div>
+        </div>
+        <div class="icon8x">
+            <ion-icon name="cash-outline"></ion-icon>
+        </div>
+    </div>
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+@section Scripts {
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+            var dataPoints = [
+                @foreach (var item in Model)
+                {
+                    @:{ x: new Date(@item.Date.Year, @item.Date.Month - 1, @item.Date.Day), y: @item.TotalRevenue },
+                }
+            ];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Doanh thu theo ngày"
+                },
+                axisX: {
+                    title: "Ngày"
+                },
+                axisY: {
+                    title: "Doanh thu",
+                    includeZero: false
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dataPoints
+                }]
+            });
+            chart.render();
+        }
+    </script>
+}

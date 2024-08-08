@@ -1,0 +1,79 @@
+﻿@model ShoeStoreProject.Models.Customer
+
+@{
+    ViewBag.Title = "Delete Customer";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-danger">Delete Customer</h2>
+        </div>
+        <div class="card-body">
+            <h3>Are you sure you want to delete this client?</h3>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Country)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @using (Html.BeginForm("DeleteCustomer", "QLCustomers", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@Model.CustomerID" />
+                <div class="form-actions">
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                    @Html.ActionLink("Cancel", "Customers", null, new { @class = "btn btn-secondary ml-2" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
